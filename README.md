@@ -14,3 +14,8 @@ Doctor Paster
   - Shift+(+/-) adjust the text's darkness
     - Ctrl+Shift+(+/-) adjust both of these at the same time
   - The window can be shrunk to only show what is loaded to the number pad with Ctrl+h
+
+# Known Issues
+- This uses the clipboard to send the elements, so pressing keys too fast may result in unintended behavior
+  - This is due to the ctrl key being held down by the program
+- The first time the program launches some defaults don't load properly

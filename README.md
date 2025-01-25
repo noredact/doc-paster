@@ -20,7 +20,5 @@ Doctor Paster
 - This uses the clipboard to send the elements, so pressing keys too fast may result in unintended behavior
   - This is due to the ctrl key being held down by the program
 - The first time the program launches some defaults don't load properly
-- Text scrolling (text that doesn't fit in box scrolls)
-  - A checkbox is supposed to start/stop this but only works if program launches with scrolling enabled
-- Adjusting jump to/increment parameters requires mouse position to be exactly on the number
-- Font size section requires fixing to match how adjust increment/ jump to position controls work
+
+

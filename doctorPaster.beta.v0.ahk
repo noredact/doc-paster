@@ -141,7 +141,7 @@ class drPaster {
         FileMenu.Add("E&xit", (*) => this.exitApp())
 
         SettingsMenu := Menu()
-        SettingsMenu.Add("Show/hide Optio&ns`tCtrl+n", (*) => this.settingsToggle())
+        SettingsMenu.Add("Show/&hide Options`tCtrl+H", (*) => this.settingsToggle())
         SettingsMenu.Add("&Font Size`tCtrl+F", (*) => this.showFontSizeDialog())
         SettingsMenu.Add("&Jump to...`tCtrl+J", (*) => this.showJumpPosDialog())
         SettingsMenu.Add("Change default empty field string", (*) => this.showEmptyStringDialog())
@@ -184,9 +184,6 @@ class drPaster {
         OnExit(ObjBindMethod(this, "handleExit"))
     }
 
-
-
-
     initializeDisplay() {
         Loop 9 {
             currentArrayPos := this.currentPosition + A_Index
@@ -210,110 +207,34 @@ class drPaster {
     addSettingsSection() {
         this.dpasteGui.Add("GroupBox", "Section xm+2 y+24 h140 w275", "Display and navigation settings")
 
-
-
-
         ; Transparency Controls
         this.dpasteGui.Add("GroupBox", "Section xp+5 yp+15 hp-20",  "Visiblity ctrl+shift+Num(+/-)")
         this.dpasteGui.Add("Text","xp+1 ys+15 Center wp-2","<< Less --------------- More >>")
         this.dpasteGui.Add("Text", "Center xp+5 yp+18", "Window ctrl+Num(+/-)")
         this.dpasteGui.Add("Slider", "vWindowTransparency NoTicks Center AltSubmit ToolTipTop Range50-255 xp yp+20 h20", "255")
-
         this.dpasteGui.Add("Text", "Center xp yp+30", "Text shift+Num(+/-)")
         this.dpasteGui.Add("Slider", "vTextTransparency NoTicks Center AltSubmit ToolTipBottom Range0-255 Invert xp yp+14 h20", "0")
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         ; Increment Controls
         this.dpasteGui.Add("GroupBox", "vincGB Section x+20 ys w120", "Adj increment")
-        ; this.incUD := this.dpasteGui.Add("UpDown","-16  xs+15 ys+22 h23 vincUD Range1-" . this.contentLength - 8, "1")
         this.dpasteGui.Add("Text", "-VScroll xp49 ys+15 h40 w66 Center  vincAmnt", "1")
         this.dpasteGui["incAmnt"].SetFont("s22")
         this.dpasteGui.SetFont("s8")
         this.incUD := this.dpasteGui.Add("UpDown","Right vincUD Range1-" . this.contentLength - 8, "1")
-        ; this.dpasteGui.Add("Edit", "-VScroll -WantReturn Number Center xs+5 ys+26 vincAmnt", "1")
+
     
     ; Add mouse wheel support for the increment control
-this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "incAmnt", "incUD"))
-; this.dpasteGui["incGB"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "incAmnt", "incUD"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "incAmnt", "incUD"))
 
         ; Jump Position Controls       
         this.dpasteGui.Add("GroupBox", "Section xs ys+63 w120", "Jump to position")
-        ; this.jumpUD := this.dpasteGui.Add("UpDown", "xs+15 ys+23 vjumpUD -16 w40 h23 Range1-" . this.contentLength - 8, "1")
         jumpBtn := this.dpasteGui.Add("Button", "Default xp+12 ys+17 w30 h33 Center", "Go")
         this.dpasteGui.Add("Text", "-VScroll  xs68 ys+15 h40 w46 vJumpPosEdit", "1")
         this.dpasteGui["JumpPosEdit"].SetFont("s18")
         this.jumpUD := this.dpasteGui.Add("UpDown", "Right xs+15 ys+23 vjumpUD 16 w40 h23 Range1-" . this.contentLength - 8, "1")
-        ; this.dpasteGui.Add("Edit", "-VScroll -WantReturn Number Right xs+5 ys+26 w45 vJumpPosEdit", "1")
+
         
         this.dpasteGui.SetFont("s8")
-        ; Add mouse wheel support for the increment control
-; this.dpasteGui["JumpPosEdit"].OnEvent("MouseMove", ObjBindMethod(this, "handleMouseWheel", "JumpPosEdit", "jumpUD"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         ; Event Handlers
         
@@ -323,11 +244,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         this.dpasteGui["TextTransparency"].OnEvent("Change", ObjBindMethod(this, "updateTextTransparency")) 
         this.incUD.OnEvent("Change", ObjBindMethod(this, "updateIncrementAmnt"))
         this.dpasteGui["JumpPosEdit"].OnEvent("Click", ObjBindMethod(this, "jumpToPosition"))
-        ; this.dpasteGui["JumpPosEdit"].OnEvent("Change", ObjBindMethod(this, "updateIncrementAmnt"))
-        ; this.dpasteGui["incAmnt"].OnEvent("Focus", ObjBindMethod(this, "pauseHotkeySBmsg"))
-        ; this.dpasteGui["JumpPosEdit"].OnEvent("Focus", ObjBindMethod(this, "pauseHotkeySBmsg"))
-        ; this.dpasteGui["incAmnt"].OnEvent("LoseFocus", ObjBindMethod(this, "resumeHotkeySBmsg"))
-        
         
         ; Button Events
         jumpBtn.OnEvent("Click", ObjBindMethod(this, "jumpToPosition"))
@@ -352,50 +268,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
 		this.dpasteGui.Add("GroupBox", "Section xs y+5 w380 h40", "Jump Preview (Ctrl+J to enter position)")
 		this.dpasteGui.Add("Text", "xs+15 ys+17 w350 vJumpPreview")
 	}
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     addDirectoryView() {
         this.dpasteGui.Add("GroupBox", "Section Center x+32 y65 w280 h140", "Change File (Numpad +/-)  Ctrl+O: change directory")
@@ -494,49 +366,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     addUserOptions(){
         this.dpasteGui.Add("GroupBox", "Section x+28 y65 w179 h140 Right", "User options")
         defaultDirCb := this.dpasteGui.Add("CheckBox", "xs+5 ys+15 vdefaultDir", "Load current file on open")
@@ -558,22 +387,12 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         viewSettingsCb.OnEvent("Click", (*) => this.handleOptionChange("textScroll"))
         
         this.dpasteGui.Add("Text", "xs+95 yp+14", "Font Size:")
-        fontSizeEdit := this.dpasteGui.Add("Edit", "x+ yp-3 Number WantReturn vdefaultSize", "8")
+        fontSizeEdit := this.dpasteGui.Add("Text", "x+ yp-3   vdefaultSize", "8")
         this.dpasteGui.Add("UpDown", "vtextSize Range8-24")
-        
-        ; Add event handler for font size changes
-        fontSizeEdit.OnEvent("Change", ObjBindMethod(this, "updateFontSize"))
-        fontSizeEdit.OnEvent("Focus", ObjBindMethod(this, "pauseHotkeySBmsg"))
-        fontSizeEdit.OnEvent("LoseFocus", ObjBindMethod(this, "resumeHotkeySBmsg"))
+        this.dpasteGui["defaultSize"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "defaultSize", "textSize"))
+        ; Add event handler for font size change
     }
-    
 
-    
-  
-    ; unfocusControl(*) {
-
-    ; }
-    
     handleOptionChange(option) {
         switch option {
             case "defaultDir":
@@ -640,7 +459,7 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         Ctrl + Numpad Dot (.): Increase increment amount
         Numpad Add (+): Move down in the directory view
         Numpad Sub (-): Move up in the directory view
-        Ctrl + N: Show/hide options panel
+        Ctrl + H: Show/hide options panel
         Ctrl + O: Open file dialog
         Ctrl + J: Open jump position dialog
         Ctrl + Numpad Add (+): Increase window opacity
@@ -666,22 +485,12 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         
         aboutGui.Show("")
     }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    addStatusBar() {
+
+   addStatusBar() {
         this.statusBar := this.dpasteGui.Add("StatusBar",, "  Current File: ")
         this.statusBar.SetParts(70, 170, 390)
         this.updateStatusBar()  ; Initial update
     }
-    
-
 
     updateStatusBar() {
         formatedFileName := ""
@@ -718,51 +527,8 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         }
         this.statusBar.SetText(formatedFileName,2)
         this.statusBar.SetText("`tScript Position: " . this.currentPosition + 1 . ". Elements " startElement "-" endElement " out of " this.curFile.contentArr.Length " loaded. Line " . currentLine . " out of " totalLines, 3)
-        this.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+N Hide Settings",4)
+        this.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+H Hide Settings",4)
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     increaseTextTransparency(){
         this.dpasteGui["TextTransparency"].Value += 30
@@ -800,7 +566,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
 		}
 	}
 	
-	
     moveText(*) {
         ; Check if textScroll is enabled
         if (this.dpasteGui["textScroll"].Value == 1) {
@@ -818,37 +583,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
             }
         }
     }
-    
-    ; moveText(*) {
-    ;     if this.dPasteGui[textScroll].Value
-    ;         return
-    ;     for controlName in this.scrollArray {
-    ;         ctrlName := controlName
-    ;         currentText := this.dpasteGui[controlName].Text
-    ;         if (StrLen(currentText) > this.textLengthThreshold) {
-    ;             ; Check if the last character is a space
-    ;             leftText := SubStr(currentText, 2)
-    ;             rightText := SubStr(currentText, 1, 1)
-    ;             newText := leftText . rightText
-                
-    ;             this.dpasteGui[ctrlName].Value := newText
-    ;         }
-    ;     }
-    ; }
-    
-    
-    ; GuiControlGet, loopText,, %loopTarget%
-    ; loopText_Len := StrLen(loopText) - 1
-    ; leftText := SubStr(loopText,2,loopText_Len)
-    ; rightText := SubStr(loopText,1,1)
-    ; GuiControl, Text, %loopTarget%, %leftText%%rightText%
-    ; sleep, 10
-    ; }
-
-
-
-
-
 
     settingsToggle() {
         this.currentToggle := !this.currentToggle
@@ -858,49 +592,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
             this.dpasteGui.Move(,,, 308)
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     showFontSizeDialog() {
         fontSizeGui := Gui("+Owner" this.dpasteGui.Hwnd)
@@ -925,47 +616,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         fontSizeGui.Show()
     }
     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     showJumpPosDialog() {
         jumpPosGui := Gui("+Owner" this.dpasteGui.Hwnd)
         jumpPosGui.OnEvent("Escape", (*) => jumpPosGui.Destroy())
@@ -1006,16 +656,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         
         jumpPosGui.Show()
     }
-    
-
-
-
-
-
-
-
-
-
 
     handleMouseWheel(controlName, upDownName, guiCtrl, info) {
         ; Check if the mouse wheel is being scrolled
@@ -1043,37 +683,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
             this.updateIncrementAmnt()
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     updateFontSize(*) {
         newSize := this.dpasteGui["defaultSize"].Value
@@ -1129,49 +738,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         this.updateDisplay
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     updateJumpPreview(*)
     {
         curContentLength := this.curFile.contentArr.Length 
@@ -1199,51 +765,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         }
         this.dpasteGui["JumpPreview"].Value := previewText
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     jumpToPosition(*) 
     {
@@ -1275,49 +796,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         this.updateDisplay()
         this.updateJumpPreview()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     updateDisplay() {
         this.scrollArray := []  ; Reset scroll array
@@ -1408,12 +886,7 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         }
         ; RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", this.parentDir)
         ; ; this.parentDir := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+[\\/]?$", "")
-        this.TVdir := "\" this.grandParentDir . "\" . this.parentDir . "\"
-
-
-
-
-        
+        this.TVdir := "\" this.grandParentDir . "\" . this.parentDir . "\"     
         this.dpasteGui["incPreviewPrev"].Value := incPrevText
         this.dpasteGui["incPreviewNext"].Value := incNextText
         this.dpasteGui["PreviewPrev"].Value := prevText
@@ -1427,48 +900,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         this.updateStatusBar() 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     printElement(contentArray) {
         sleepamnt := 50
         old_clip := ClipboardAll()
@@ -1478,59 +909,7 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         Sleep sleepamnt
         A_Clipboard := old_clip
         }
-    
-    
-    
-    
-    
-    
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     ; change file and reset variables
     changeFile(filePath) {
         this.curFile := {}
@@ -1542,28 +921,11 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         this.contentLength := this.curFile.contentArr.Length
         this.lineCounterArr := this.curFile.lineArr
         this.totalLines := this.curFile.lines
-        
-        
-        
-        
-        
+
         ;refresh display
         this.updateDisplay()
         this.updateJumpPreview()
     }
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
     showEmptyStringDialog() {
         emptyStringGui := Gui("+Owner" this.dpasteGui.Hwnd)
@@ -1586,35 +948,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         
         emptyStringGui.Show()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     changeDir(*) {
         treeView := this.dpasteGui["DirView"]
@@ -1714,72 +1047,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
             MsgBox("File not found: " . fullPath)
         }
     }
-    
-    
-    
-    
-    ; loadSelectedFile(*) {
-    ;     this.curFile := {}
-        
-    ;     try selectedItem := this.dpasteGui["DirView"].GetSelection()  ; Get selected item
-    ;     selectedText := this.dpasteGui["DirView"].GetText(selectedItem)
-    ;     if (SubStr(selectedText,-3) != "csv")
-    ;         return
-    ;     fullPath := (A_WorkingDir . "\" . selectedText)
-    ;     this.changeFile(fullPath)
-    ;     }
-        
-    ; runSelectedFile(*) {
-    ;     selectedItem := this.dpasteGui["DirView"].GetSelection()  ; Get selected item
-    ;     selectedText := this.dpasteGui["DirView"].GetText(selectedItem)
-    ;     if (SubStr(selectedText,-3) != "csv")
-    ;         return
-    ;     fullPath := (A_WorkingDir . "\" . selectedText)
-    ;    run fullPath
-    ;     }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     saveSettings() {
         iniPath := A_ScriptFullPath . ":Stream:$DATA"
@@ -1868,49 +1135,6 @@ this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel
         return 0
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     navigateTreeView(direction) {
         treeView := this.dpasteGui["DirView"]
         currentSelection := treeView.GetSelection()
@@ -1974,7 +1198,7 @@ NumpadMult::
   if A_IsSuspended
     MainGui.statusBar.SetText("`t****SCRIPT SUSPENDED****TRIGGERS DISABLED****PRESS Numpad+Mult TO RESUME****",4)
   else
-    MainGui.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+N Hide Settings",4)
+    MainGui.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+H Hide Settings",4)
 }
 #SuspendExempt false
 
@@ -2067,15 +1291,6 @@ Numpad7::
 Numpad8::
 Numpad9::
 {
-    ; If WinActive(guiHwnd) {
-    ;     focusedHwnd := ControlGetFocus("A")
-    ;     FocusedClassNN := ControlGetClassNN(FocusedHwnd)
-    ;     If InStr(FocusedClassNN, "Edit") {
-    ;         MainGui.statusBar.SetText("`t****EDIT CONTROL FOCUS DETECTED****SUSPENDING HOTKEY TRIGGERS****", 3)
-    ;         send SubStr(A_ThisHotkey, 7)
-    ;         return
-    ;     }
-    ; }
     content := MainGui.curFile.contentArr
     MainGui.printElement(content)
 }

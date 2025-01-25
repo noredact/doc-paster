@@ -1,6 +1,4 @@
-﻿
-
-#Requires AutoHotkey v2+
+﻿#Requires AutoHotkey v2+
 #SingleInstance
 #Warn
 SendMode "Input"

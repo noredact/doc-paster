@@ -1,7 +1,8 @@
 2025-01-24
 Doctor Paster
 
-- This program reads a .csv document and allows user to press 1-9 on their number pad to send an element from that CSV to the cursor.
+- This program reads a document and allows user to press 1-9 on their number pad to send an element to the cursor.
+- File can be read as a CSV, line by line, or with a custom delimiter. 
 - A display shows what will be sent when the user presses a number
 - Documents that contain more than 9 elements can be cycled through using zero and dot (.) from the number pad
 - User can adjust how much zero or dot increments the program using ctrl + zero/dot
@@ -21,7 +22,9 @@ Doctor Paster
 
 # Known Issues
 - This uses the clipboard to send the elements, so pressing keys too fast may result in unintended behavior
-  - This is due to the ctrl key being held down by the program
-- The first time the program launches some defaults don't load properly
-
+  
+# TO DO
+- Change how text is sent to avoid the rapid pressing issue
+- Add images to this readme for better instructions
+- The "> " file indicator sometimes doesn't get cleared properly
 

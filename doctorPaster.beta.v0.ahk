@@ -95,6 +95,18 @@ class drPaster {
     textLengthThreshold := 12  ; Maximum length before scrolling
     optionTextLengthThreshold := 12
     scrollTimer := ""
+/*
+______________________________________________________________________________________________________
+Start __New Section
+******************************************************************************************************
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+*/
+
+
 
     __New() {
         this.dpasteGui := Gui()
@@ -165,12 +177,9 @@ class drPaster {
         
         ; Initialize scroll timer
         this.scrollTimer := ObjBindMethod(this, "moveText")
-        if (this.dpasteGui["textScroll"].Value == 1) {
-            SetTimer(this.scrollTimer, 240)
-        } else {
-            SetTimer(this.scrollTimer, 0)
-        }
-
+        SetTimer(this.scrollTimer, 240)
+        
+        ;load settings
         this.loadSettings()
 
         ; this.dpasteGui.Show("w1183" this.winPos)
@@ -183,6 +192,32 @@ class drPaster {
 
         OnExit(ObjBindMethod(this, "handleExit"))
     }
+/*
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+__New __New - __New __New - __New __New - __New __New - __New __New - __New __New - __New __New -
+______________________________________________________________________________________________________
+End __New Section
+******************************************************************************************************
+*/
+
+
+
+/*
+______________________________________________________________________________________________________
+Start intialize display Section
+******************************************************************************************************
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+*/
+
+
 
     initializeDisplay() {
         Loop 9 {
@@ -203,7 +238,34 @@ class drPaster {
         }
 
     }
-	
+	/*
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display - intialize display intialize display -
+______________________________________________________________________________________________________
+End intialize display Section
+******************************************************************************************************
+*/
+
+
+
+
+/*
+______________________________________________________________________________________________________
+Start settings section Section
+******************************************************************************************************
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+*/
+
+
+
     addSettingsSection() {
         this.dpasteGui.Add("GroupBox", "Section xm+2 y+24 h140 w275", "Display and navigation settings")
 
@@ -245,10 +307,34 @@ class drPaster {
         this.incUD.OnEvent("Change", ObjBindMethod(this, "updateIncrementAmnt"))
         this.dpasteGui["JumpPosEdit"].OnEvent("Click", ObjBindMethod(this, "jumpToPosition"))
         
+        
         ; Button Events
         jumpBtn.OnEvent("Click", ObjBindMethod(this, "jumpToPosition"))
         
     }
+/*
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section - settings section settings section -
+______________________________________________________________________________________________________
+End settings section Section
+******************************************************************************************************
+*/
+
+/*
+______________________________________________________________________________________________________
+Start preview section Section
+******************************************************************************************************
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+*/
+
 
     
 	addPreviewSection(){
@@ -259,9 +345,9 @@ class drPaster {
 		this.dpasteGui.Add("Text", "xs+10 y+5 w360 vPreviewNext", "Next: ")
 		; Add increment preview section
 		this.dpasteGui.Add("GroupBox", "Section xs y+5 w380 h35", "Incremented Preview")
-		this.dpasteGui.Add("Text", "xs+5 yp+17", "Incr. Prev.: ")
+		this.dpasteGui.Add("Text", "xs+5 yp+17", "Previous: ")
 		this.dpasteGui.Add("Text", "x+ yp w135 vincPreviewPrev")
-		this.dpasteGui.Add("Text", "x+1 yp", "🔷 Incr. Next: ")
+		this.dpasteGui.Add("Text", "x+1 yp", "🔷  Next: ")
 		this.dpasteGui.Add("Text", "x+ yp w115 vincPreviewNext")
 		
 		; Add jump preview section
@@ -269,102 +355,30 @@ class drPaster {
 		this.dpasteGui.Add("Text", "xs+15 ys+17 w350 vJumpPreview")
 	}
 
-    addDirectoryView() {
-        this.dpasteGui.Add("GroupBox", "Section Center x+32 y65 w280 h140", "Change File (Numpad +/-)  Ctrl+O: change directory")
-        dirView := this.dpasteGui.Add("TreeView", "xs+5 ys+15 w270 h90 vDirView")
-        
-        ; Add event handler for selection (single-click)
-        dirView.OnEvent("ItemSelect", (*) => this.handleTreeViewSelection(dirView))
-        
-        ; Add event handler for double-click
-        dirView.OnEvent("DoubleClick", (*) => this.handleTreeViewDoubleClick(dirView))
-        
-        ; Add "Change Directory" button
-        newDirBtn := this.dpasteGui.Add("Button", "xs+8 y+5 w100 h23 Center", "Change Directory")
-        this.dpasteGui.Add("Text", " vcurDirDisp Right x+8 yp+4 w150 h23", this.TVdir)
-        newDirBtn.OnEvent("Click", ObjBindMethod(this, "changeDir"))
-        
-        ; Populate TreeView with files
-        this.populateTreeView(dirView, dirPath)
-        
-        if RegExMatch(this.fileName, "^(.*)[\\/][^\\/]+$", &match) {
-            initialDir := match[1]
-            this.populateTreeView(dirView, this.fileName)
-    }
-    
-}
+/*
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section - preview section preview section -
+______________________________________________________________________________________________________
+End preview section Section
+******************************************************************************************************
+*/
 
 
-    handleTreeViewSelection(treeView) {
-        ; Check if an item is selected
-        selectedItem := treeView.GetSelection()
-        if !selectedItem {
-            return  ; No item selected, do nothing
-        }
-        
-        ; Get the text of the selected item
-        selectedText := treeView.GetText(selectedItem)
-        if (SubStr(selectedText, -3) != "csv") {
-            return  ; Selected item is not a CSV file, do nothing
-        }
-        
-        ; Use the directory path stored in dirPath or the parent directory of the current file
-        parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
-        fullPath := parentFolder . "\" . selectedText
-        
-        ; Load the selected file
-        if FileExist(fullPath) {
-            this.changeFile(fullPath)
-        } else {
-            MsgBox("File not found: " . fullPath)
-        }
-    }
-    
-    handleTreeViewDoubleClick(treeView) {
-        ; Check if an item is selected
-        selectedItem := treeView.GetSelection()
-        if !selectedItem {
-            return  ; No item selected, do nothing
-        }
-        
-        ; Get the text of the selected item
-        selectedText := treeView.GetText(selectedItem)
-        if (SubStr(selectedText, -3) != "csv") {
-            return  ; Selected item is not a CSV file, do nothing
-        }
-        
-        ; Use the directory path stored in dirPath or the parent directory of the current file
-        parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
-        fullPath := parentFolder . "\" . selectedText
-        
-        ; Run the selected file
-        if FileExist(fullPath) {
-            Run(fullPath)
-        } else {
-            MsgBox("File not found: " . fullPath)
-        }
-    }
-    populateTreeView(treeView, path) {
-        ; Clear the tree view
-        treeView.Delete()
-        currentNode := ""
-        if RegExMatch(path, "^(.*)[\\/][^\\/]+$", &match) {
-            parentFolder := match[1]
-        }
-        ; Add parent node for current directory
-        ; parentNode := treeView.Add(path, , "Expand")
-        
-        ; Find all CSV files in the directory
-        Loop Files, parentFolder . "\*.csv" {
-            currentNode := treeView.Add(A_LoopFileName)
-            ; treeView.Add(A_LoopFileName, parentNode)
-        }
-        
-        ; Error handling: if no files found, add a placeholder node
-        if !currentNode {
-            treeView.Add("No CSV files found`nTry another directory")
-        }
-    }
+/*
+______________________________________________________________________________________________________
+Start check boxes/user settings Section
+******************************************************************************************************
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+*/
+
 
     addUserOptions(){
         this.dpasteGui.Add("GroupBox", "Section x+28 y65 w179 h140 Right", "User options")
@@ -386,11 +400,13 @@ class drPaster {
         viewSettingsCb := this.dpasteGui.Add("CheckBox", "xs+5 y+5 vtextScroll", "Text scroll")
         viewSettingsCb.OnEvent("Click", (*) => this.handleOptionChange("textScroll"))
         
-        this.dpasteGui.Add("Text", "xs+95 yp+14", "Font Size:")
-        fontSizeEdit := this.dpasteGui.Add("Text", "x+ yp-3   vdefaultSize", "8")
+        this.dpasteGui.Add("Text", "xs+88 yp+1 vfontSizeText", "Font Size:")
+        fontSizeEdit := this.dpasteGui.Add("Text", "x+2 yp+1 w35 h24   vdefaultSize", "8")
         this.dpasteGui.Add("UpDown", "vtextSize Range8-24")
-        this.dpasteGui["defaultSize"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "defaultSize", "textSize"))
         ; Add event handler for font size change
+        this.dpasteGui["defaultSize"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "defaultSize", "textSize"))
+        this.dpasteGui["fontSizeText"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "defaultSize", "textSize"))
+        this.dpasteGui["textSize"].OnEvent("Change", (*) => this.updateFontSize())
     }
 
     handleOptionChange(option) {
@@ -426,23 +442,158 @@ class drPaster {
                     ; If loading position is enabled, save current window position
                     IniWrite(textScroll, A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "textScroll")
                 }
-            case "textScroll":
-                ; Save the state of the textScroll checkbox
-                IniWrite(this.dpasteGui["textScroll"].Value, A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "textScroll")
-                
-                ; Start or stop the scroll timer based on the checkbox state
-                if (this.dpasteGui["textScroll"].Value == 1) {
-                    ; Start the scroll timer if textScroll is enabled
-                    SetTimer(this.scrollTimer, 240)
-                    this.moveText()
-                } else {
-                    ; Stop the scroll timer if textScroll is disabled
-                    SetTimer(this.scrollTimer, 0)
-                }
             }
             
     }
     
+    
+/*
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings - check boxes/user settings check boxes/user settings -
+______________________________________________________________________________________________________
+End check boxes/user settings Section
+******************************************************************************************************
+*/
+
+/*
+______________________________________________________________________________________________________
+Start tree view section Section
+******************************************************************************************************
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+*/
+
+
+addDirectoryView() {
+    this.dpasteGui.Add("GroupBox", "Section Center x+32 y65 w280 h140", "Change File (Numpad +/-)  Ctrl+O: change directory")
+    dirView := this.dpasteGui.Add("TreeView", "xs+5 ys+15 w270 h90 vDirView")
+    
+    ; Add event handler for selection (single-click)
+    dirView.OnEvent("ItemSelect", (*) => this.handleTreeViewSelection(dirView))
+    
+    ; Add event handler for double-click
+    dirView.OnEvent("DoubleClick", (*) => this.handleTreeViewDoubleClick(dirView))
+    
+    ; Add "Change Directory" button
+    newDirBtn := this.dpasteGui.Add("Button", "xs+8 y+5 w100 h23 Center", "Change Directory")
+    this.dpasteGui.Add("Text", " vcurDirDisp Right x+8 yp+4 w150 h23", this.TVdir)
+    newDirBtn.OnEvent("Click", ObjBindMethod(this, "changeDir"))
+    
+    ; Populate TreeView with files
+    this.populateTreeView(dirView, dirPath)
+    
+    if RegExMatch(this.fileName, "^(.*)[\\/][^\\/]+$", &match) {
+        initialDir := match[1]
+        this.populateTreeView(dirView, this.fileName)
+}
+
+}
+
+
+handleTreeViewSelection(treeView) {
+    ; Check if an item is selected
+    selectedItem := treeView.GetSelection()
+    if !selectedItem {
+        return  ; No item selected, do nothing
+    }
+    
+    ; Get the text of the selected item
+    selectedText := treeView.GetText(selectedItem)
+    if (SubStr(selectedText, -3) != "csv") {
+        return  ; Selected item is not a CSV file, do nothing
+    }
+    
+    ; Use the directory path stored in dirPath or the parent directory of the current file
+    parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
+    fullPath := parentFolder . "\" . selectedText
+    
+    ; Load the selected file
+    if FileExist(fullPath) {
+        this.changeFile(fullPath)
+    } else {
+        MsgBox("File not found: " . fullPath)
+    }
+}
+
+handleTreeViewDoubleClick(treeView) {
+    ; Check if an item is selected
+    selectedItem := treeView.GetSelection()
+    if !selectedItem {
+        return  ; No item selected, do nothing
+    }
+    
+    ; Get the text of the selected item
+    selectedText := treeView.GetText(selectedItem)
+    if (SubStr(selectedText, -3) != "csv") {
+        return  ; Selected item is not a CSV file, do nothing
+    }
+    
+    ; Use the directory path stored in dirPath or the parent directory of the current file
+    parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
+    fullPath := parentFolder . "\" . selectedText
+    
+    ; Run the selected file
+    if FileExist(fullPath) {
+        Run(fullPath)
+    } else {
+        MsgBox("File not found: " . fullPath)
+    }
+}
+populateTreeView(treeView, path) {
+    ; Clear the tree view
+    treeView.Delete()
+    currentNode := ""
+    if RegExMatch(path, "^(.*)[\\/][^\\/]+$", &match) {
+        parentFolder := match[1]
+    }
+    ; Add parent node for current directory
+    ; parentNode := treeView.Add(path, , "Expand")
+    
+    ; Find all CSV files in the directory
+    Loop Files, parentFolder . "\*.csv" {
+        currentNode := treeView.Add(A_LoopFileName)
+        ; treeView.Add(A_LoopFileName, parentNode)
+    }
+    
+    ; Error handling: if no files found, add a placeholder node
+    if !currentNode {
+        treeView.Add("No CSV files found`nTry another directory")
+    }
+}
+
+/*
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section - tree view section tree view section -
+______________________________________________________________________________________________________
+End tree view section Section
+******************************************************************************************************
+*/
+
+
+/*
+______________________________________________________________________________________________________
+Start about page Section
+******************************************************************************************************
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+*/
+
+
+
     showAbout(*) {
         aboutGui := Gui("+Owner" this.dpasteGui.Hwnd)
         aboutGui.Opt("+AlwaysOnTop")
@@ -485,8 +636,32 @@ class drPaster {
         
         aboutGui.Show("")
     }
+/*
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+about page about page - about page about page - about page about page - about page about page - about page about page - about page about page - about page about page -
+______________________________________________________________________________________________________
+End about page Section
+******************************************************************************************************
+*/
 
-   addStatusBar() {
+
+/*
+______________________________________________________________________________________________________
+Start status bar Section
+******************************************************************************************************
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+*/
+
+
+    addStatusBar() {
         this.statusBar := this.dpasteGui.Add("StatusBar",, "  Current File: ")
         this.statusBar.SetParts(70, 170, 390)
         this.updateStatusBar()  ; Initial update
@@ -527,8 +702,33 @@ class drPaster {
         }
         this.statusBar.SetText(formatedFileName,2)
         this.statusBar.SetText("`tScript Position: " . this.currentPosition + 1 . ". Elements " startElement "-" endElement " out of " this.curFile.contentArr.Length " loaded. Line " . currentLine . " out of " totalLines, 3)
-        this.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+H Hide Settings",4)
+        this.statusBar.SetText("`t`tNum* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+H Hide Settings",4)
     }
+    
+/*
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar - status bar status bar -
+______________________________________________________________________________________________________
+End status bar Section
+******************************************************************************************************
+*/
+
+/*
+______________________________________________________________________________________________________
+Start functions for hotkeys Section
+******************************************************************************************************
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+*/
+
+
 
     increaseTextTransparency(){
         this.dpasteGui["TextTransparency"].Value += 30
@@ -566,23 +766,122 @@ class drPaster {
 		}
 	}
 	
+    printElement(contentArray) {
+        sleepamnt := 50
+        old_clip := ClipboardAll()
+        Sleep sleepamnt
+        A_Clipboard := contentArray[Integer(SubStr(A_ThisHotkey, 7)) + this.currentPosition]
+        Send "^v"
+        Sleep sleepamnt
+        A_Clipboard := old_clip
+        }
+
+        navigateTreeView(direction) {
+            treeView := this.dpasteGui["DirView"]
+            currentSelection := treeView.GetSelection()
+            
+            ; If no selection, start at the first or last item
+            if (!currentSelection) {
+                if (direction > 0) {
+                    ; Move to the first item
+                    firstItem := treeView.GetChild(0)
+                    if (firstItem) {
+                        treeView.Modify(firstItem, "Select")  ; Select the first item
+                    }
+                } else {
+                    ; Move to the last item
+                    lastItem := treeView.GetPrev(0)  ; Start from the root and get the last item
+                    if (lastItem) {
+                        treeView.Modify(lastItem, "Select")  ; Select the last item
+                    }
+                }
+                return
+            }
+            
+            ; Move up or down based on the direction
+            if (direction > 0) {
+                ; Move down to the next item
+                nextItem := treeView.GetNext(currentSelection)
+                if (nextItem) {
+                    treeView.Modify(nextItem, "Select")  ; Select the next item
+                }
+            } else {
+                ; Move up to the previous item
+                prevItem := treeView.GetPrev(currentSelection)
+                if (prevItem) {
+                    treeView.Modify(prevItem, "Select")  ; Select the previous item
+                }
+            }
+            
+            ; Optionally, load the selected file automatically
+            this.loadSelectedFile()
+        }
+        
+/*
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys - functions for hotkeys functions for hotkeys -
+______________________________________________________________________________________________________
+End functions for hotkeys Section
+******************************************************************************************************
+*/
+
+/*
+______________________________________________________________________________________________________
+Start move text Section
+******************************************************************************************************
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+*/
+
+
+
     moveText(*) {
         ; Check if textScroll is enabled
         if (this.dpasteGui["textScroll"].Value == 1) {
             for controlName in this.scrollArray {
                 ctrlName := controlName
                 currentText := this.dpasteGui[controlName].Text
-                if (StrLen(currentText) > this.textLengthThreshold) {
+                ; msgbox A_Index "  cur text:" currentText
                     ; Check if the last character is a space
                     leftText := SubStr(currentText, 2)
                     rightText := SubStr(currentText, 1, 1)
                     newText := leftText . rightText
-                    
                     this.dpasteGui[ctrlName].Value := newText
-                }
             }
         }
     }
+/*
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+move text move text - move text move text - move text move text - move text move text - move text move text - move text move text - move text move text -
+______________________________________________________________________________________________________
+End move text Section
+******************************************************************************************************
+*/
+
+
+/*
+______________________________________________________________________________________________________
+Start settings toggle Section
+******************************************************************************************************
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+*/
+
+
 
     settingsToggle() {
         this.currentToggle := !this.currentToggle
@@ -592,6 +891,29 @@ class drPaster {
             this.dpasteGui.Move(,,, 308)
         }
     }
+/*
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle - settings toggle settings toggle -
+______________________________________________________________________________________________________
+End settings toggle Section
+******************************************************************************************************
+*/
+
+
+/*
+______________________________________________________________________________________________________
+Start menu popups Section
+******************************************************************************************************
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+*/
 
     showFontSizeDialog() {
         fontSizeGui := Gui("+Owner" this.dpasteGui.Hwnd)
@@ -656,9 +978,58 @@ class drPaster {
         
         jumpPosGui.Show()
     }
+    showEmptyStringDialog() {
+        emptyStringGui := Gui("+Owner" this.dpasteGui.Hwnd)
+        emptyStringGui.OnEvent("Escape", (*) => emptyStringGui.Destroy())
+        emptyStringGui.OnEvent("Close", (*) => emptyStringGui.Destroy())
+        
+        emptyStringGui.SetFont("s10", "Segoe UI")
+        emptyStringGui.Add("Text",, "Reset string for empty fields:")
+        
+        emtpyStringValue := emptyStringGui.Add("Edit", "vdefaultEmptyString w100", IniRead(A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "defaultEmptyString", "¯\_(ツ)_/¯"))
+        
+        applyBtn := emptyStringGui.Add("Button", "Default w80", "Save")
+        applyBtn.OnEvent("Click", (*) => (
+            IniWrite(emtpyStringValue.value,  A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "defaultEmptyString")
+            this.changeFile(this.fileName),
+            emptyStringGui.Destroy()
+        ))
+        cancelBtn := emptyStringGui.Add("Button", "x+10 w80", "Cancel")
+        cancelBtn.OnEvent("Click", (*) => emptyStringGui.Destroy())
+        
+        emptyStringGui.Show()
+    }
+
+/*
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups - menu popups menu popups -
+______________________________________________________________________________________________________
+End menu popups Section
+******************************************************************************************************
+*/
+
+
+/*
+______________________________________________________________________________________________________
+Start handle mouse wheel Section
+******************************************************************************************************
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+*/
+
+
 
     handleMouseWheel(controlName, upDownName, guiCtrl, info) {
         ; Check if the mouse wheel is being scrolled
+        ; if controlName == "fontSizeText"
+        ;     controlName := "textSize"
         if (info = "MouseWheelUp" || info = "MouseWheelDown") {
             ; Get the current value of the UpDown control
             currentValue := this.dpasteGui[upDownName].Value
@@ -681,11 +1052,35 @@ class drPaster {
             
             ; Trigger any associated logic (e.g., update the display)
             this.updateIncrementAmnt()
+            this.updateFontSize()
         }
     }
+/*
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel - handle mouse wheel handle mouse wheel -
+______________________________________________________________________________________________________
+End handle mouse wheel Section
+******************************************************************************************************
+*/
+/*
+______________________________________________________________________________________________________
+Start update font size Section
+******************************************************************************************************
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+*/
+
+
 
     updateFontSize(*) {
-        newSize := this.dpasteGui["defaultSize"].Value
+        newSize := this.dpasteGui["textSize"].Value
         if (newSize = "" || newSize < 8 || newSize > 24) {
             ToolTip("Font size must be between 8 and 24")
             SetTimer () => ToolTip(), -3000
@@ -737,6 +1132,30 @@ class drPaster {
         }
         this.updateDisplay
     }
+/*
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size - update font size update font size -
+______________________________________________________________________________________________________
+End update font size Section
+******************************************************************************************************
+*/
+
+/*
+______________________________________________________________________________________________________
+Start update jump preview Section
+******************************************************************************************************
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+*/
+
+
 
     updateJumpPreview(*)
     {
@@ -796,6 +1215,29 @@ class drPaster {
         this.updateDisplay()
         this.updateJumpPreview()
     }
+/*
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview - update jump preview update jump preview -
+______________________________________________________________________________________________________
+End update jump preview Section
+******************************************************************************************************
+*/
+
+/*
+______________________________________________________________________________________________________
+Start update display Section
+******************************************************************************************************
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+*/
+
 
     updateDisplay() {
         this.scrollArray := []  ; Reset scroll array
@@ -815,7 +1257,18 @@ class drPaster {
                 }
             }
         }
-        
+    /*
+______________________________________________________________________________________________________
+Start update prev/next previews Section
+******************************************************************************************************
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+*/
+
+
         ; Update preview text
         incAmount := this.incAmount
         
@@ -846,15 +1299,13 @@ class drPaster {
         nextPos := nextPosStart
         if (nextPos <= this.curFile.contentArr.Length)
         {
-            ; msgbox "nextPos= " . nextPos . "--Start-Pos=" nextPos - nextPosStart
             Loop
                 {
                     nextText .= this.curFile.contentArr[nextPos]
                     nextPos += 1
-                    ; msgbox "nextPos= " . nextPos 
                 if (nextPos > this.curFile.contentArr.Length || nextPos - nextPosStart >= this.previewSize)
                     break
-                nextText .= prevDelim
+                nextText .= nextDelim
             }
         }
         else 
@@ -864,18 +1315,35 @@ class drPaster {
         incPrevPos := Max(1, this.currentPosition - incAmount + 1)
         incPrevText := this.curFile.contentArr[incPrevPos]
         if incPrevPos == 1
+        {
             incPrevText := "N/A - at file start"
-        else (StrLen(incPrevText) > this.optionTextLengthThreshold)
-            this.scrollArray.Push("incPreviewPrev")
-        
+        }
+        else {
+            if (StrLen(incPrevText) > this.optionTextLengthThreshold)
+                this.scrollArray.Push("incPreviewPrev")
+        }   
+            
         ; Increment Next
         incNextPos := Min(this.curFile.contentArr.Length, this.currentPosition + 9 + incAmount)
         incNextText := this.curFile.contentArr[incNextPos]
         if incNextPos + 1 > this.curFile.contentArr.Length
             incNextText := "N/A - beyond end of file"
-        if (StrLen(incNextText) > this.optionTextLengthThreshold)
-            this.scrollArray.Push("incPreviewNext")
+        else {
+            if (StrLen(incNextText) > this.optionTextLengthThreshold)
+                this.scrollArray.Push("incPreviewNext")
+    }
     
+/*
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews - update prev/next previews update prev/next previews -
+______________________________________________________________________________________________________
+End update prev/next previews Section
+******************************************************************************************************
+*/
 
         this.TVdir := ""
         if RegExMatch(this.fileName, "[\\/](?<GrandParent>[^\\/]+)[\\/][^\\/]+[\\/][^\\/]+$", &match) {
@@ -900,15 +1368,30 @@ class drPaster {
         this.updateStatusBar() 
     }
 
-    printElement(contentArray) {
-        sleepamnt := 50
-        old_clip := ClipboardAll()
-        Sleep sleepamnt
-        A_Clipboard := contentArray[Integer(SubStr(A_ThisHotkey, 7)) + this.currentPosition]
-        Send "^v"
-        Sleep sleepamnt
-        A_Clipboard := old_clip
-        }
+/*
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+update display update display - update display update display - update display update display - update display update display - update display update display - update display update display - update display update display -
+______________________________________________________________________________________________________
+End update display Section
+******************************************************************************************************
+*/
+
+
+/*
+______________________________________________________________________________________________________
+Start new file functions Section
+******************************************************************************************************
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+*/
+
 
     ; change file and reset variables
     changeFile(filePath) {
@@ -927,27 +1410,6 @@ class drPaster {
         this.updateJumpPreview()
     }
 
-    showEmptyStringDialog() {
-        emptyStringGui := Gui("+Owner" this.dpasteGui.Hwnd)
-        emptyStringGui.OnEvent("Escape", (*) => emptyStringGui.Destroy())
-        emptyStringGui.OnEvent("Close", (*) => emptyStringGui.Destroy())
-        
-        emptyStringGui.SetFont("s10", "Segoe UI")
-        emptyStringGui.Add("Text",, "Reset string for empty fields:")
-        
-        emtpyStringValue := emptyStringGui.Add("Edit", "vdefaultEmptyString w100", IniRead(A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "defaultEmptyString", "¯\_(ツ)_/¯"))
-        
-        applyBtn := emptyStringGui.Add("Button", "Default w80", "Save")
-        applyBtn.OnEvent("Click", (*) => (
-            IniWrite(emtpyStringValue.value,  A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "defaultEmptyString")
-            this.changeFile(this.fileName),
-            emptyStringGui.Destroy()
-        ))
-        cancelBtn := emptyStringGui.Add("Button", "x+10 w80", "Cancel")
-        cancelBtn.OnEvent("Click", (*) => emptyStringGui.Destroy())
-        
-        emptyStringGui.Show()
-    }
 
     changeDir(*) {
         treeView := this.dpasteGui["DirView"]
@@ -956,7 +1418,7 @@ class drPaster {
         newFilePath := FileSelect(3,, "Select a CSV file")
         if newFilePath == ""  ; If the user cancels, do nothing
             return
-    changingFile := readTargetFile(newFilePath)
+        changingFile := readTargetFile(newFilePath)
         ; Extract the parent directory from the selected file path
         if RegExMatch(newFilePath, "^(?<Drive>[A-Za-z]:)?(?<Path>.*)[\\/][^\\/]+$", &match) {
             ; Extract the drive and path
@@ -980,19 +1442,6 @@ class drPaster {
             this.updateJumpPreview()
         }
     }
-
-    ; changeDir(*) {
-    ;     treeView := this.dpasteGui["DirView"]
-
-    ;     newdirPath := FileSelect()
-    ;     if newdirPath == ""
-    ;         return
-    ;     this.populateTreeView(treeView,newdirPath)
-    ;     this.updateDisplay()
-    ;     this.updateJumpPreview()
-    ; }
-    
-    
     
     loadSelectedFile(*) {
         this.curFile := {}
@@ -1048,6 +1497,29 @@ class drPaster {
         }
     }
 
+/*
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions - new file functions new file functions -
+______________________________________________________________________________________________________
+End new file functions Section
+******************************************************************************************************
+*/
+/*
+______________________________________________________________________________________________________
+Start update settings / iniread/write Section
+******************************************************************************************************
+update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write -
+update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write -
+update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write -
+update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write -
+update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write - update settings / iniread/write update settings / iniread/write -
+*/
+
+
     saveSettings() {
         iniPath := A_ScriptFullPath . ":Stream:$DATA"
         
@@ -1084,14 +1556,7 @@ class drPaster {
         this.dpasteGui["showSettings"].Value := showSettings
         this.dpasteGui["loadViewSettings"].Value := loadViewSettings
         this.dpasteGui["textScroll"].Value := textScroll
-    
-        ; Initialize the scroll timer based on the textScroll checkbox state
-        if (this.dpasteGui["textScroll"].Value == 1) {
-            SetTimer(this.scrollTimer, 240)
-        } else {
-            SetTimer(this.scrollTimer, 0)
-        }
-        
+
         ; Set position if enabled
         if (loadLastPos == "1") {
             this.currentPosition := Integer(lastPosition)
@@ -1125,8 +1590,20 @@ class drPaster {
             }
         }
         this.updateDisplay()
-          
     }   
+    
+/*
+______________________________________________________________________________________________________
+Start exit functions Section
+******************************************************************************************************
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+*/
+
+
     handleExit(ExitReason, ExitCode) {
         SetTimer(this.scrollTimer, 0)  ; Stop the scroll timer
         ; Save all settings before exit
@@ -1135,52 +1612,21 @@ class drPaster {
         return 0
     }
 
-    navigateTreeView(direction) {
-        treeView := this.dpasteGui["DirView"]
-        currentSelection := treeView.GetSelection()
-        
-        ; If no selection, start at the first or last item
-        if (!currentSelection) {
-            if (direction > 0) {
-                ; Move to the first item
-                firstItem := treeView.GetChild(0)
-                if (firstItem) {
-                    treeView.Modify(firstItem, "Select")  ; Select the first item
-                }
-            } else {
-                ; Move to the last item
-                lastItem := treeView.GetPrev(0)  ; Start from the root and get the last item
-                if (lastItem) {
-                    treeView.Modify(lastItem, "Select")  ; Select the last item
-                }
-            }
-            return
-        }
-        
-        ; Move up or down based on the direction
-        if (direction > 0) {
-            ; Move down to the next item
-            nextItem := treeView.GetNext(currentSelection)
-            if (nextItem) {
-                treeView.Modify(nextItem, "Select")  ; Select the next item
-            }
-        } else {
-            ; Move up to the previous item
-            prevItem := treeView.GetPrev(currentSelection)
-            if (prevItem) {
-                treeView.Modify(prevItem, "Select")  ; Select the previous item
-            }
-        }
-        
-        ; Optionally, load the selected file automatically
-        this.loadSelectedFile()
-    }
-    
     exitApp() {    
         ; Force script termination
         ExitApp 0
     }
-    
+ /*
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions - exit functions exit functions -
+______________________________________________________________________________________________________
+End exit functions Section
+******************************************************************************************************
+*/
 }
 
 ; Create global instance of GUI
@@ -1194,11 +1640,11 @@ MainGui.updateDisplay()
 ; Reload Script
 NumpadMult::
 {
-  Suspend
-  if A_IsSuspended
-    MainGui.statusBar.SetText("`t****SCRIPT SUSPENDED****TRIGGERS DISABLED****PRESS Numpad+Mult TO RESUME****",4)
-  else
-    MainGui.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+H Hide Settings",4)
+    Suspend
+    if A_IsSuspended
+        MainGui.statusBar.SetText("`t****SCRIPT SUSPENDED****TRIGGERS DISABLED****PRESS Numpad+Mult TO RESUME****",4)
+    else
+        MainGui.statusBar.SetText("`t`tNumpad+* Disable Triggers - Ctrl+Numpad0/Dot Adjust Increment Amount - Ctrl+H Hide Settings",4)
 }
 #SuspendExempt false
 
@@ -1267,15 +1713,6 @@ NumpadDot:: {
 }
 
 Numpad0:: {
-    ; If WinActive(guiHwnd) {
-    ;     focusedHwnd := ControlGetFocus("A")
-    ;     FocusedClassNN := ControlGetClassNN(FocusedHwnd)
-    ;     ; If (InStr(FocusedClassNN, "Edit")) {
-    ;     ;     MainGui.statusBar.SetText("`t****EDIT CONTROL FOCUS DETECTED****SUSPENDING HOTKEY TRIGGERS****", 3)
-    ;     ;     send SubStr(A_ThisHotkey, 7)
-    ;     ;     return
-    ;     ; }
-    ; }
     MainGui.currentPosition := Max(0, MainGui.currentPosition - MainGui.incAmount)
     MainGui.updateDisplay()
 }

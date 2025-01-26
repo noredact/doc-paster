@@ -27,4 +27,7 @@ Doctor Paster
 - Change how text is sent to avoid the rapid pressing issue
 - Add images to this readme for better instructions
 - The "> " file indicator sometimes doesn't get cleared properly
+- Have this be tested on different systems
+- Clean codebase, remove debug comments, etc...
+
 

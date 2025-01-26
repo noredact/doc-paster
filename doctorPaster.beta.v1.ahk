@@ -1,4 +1,4 @@
-#Requires AutoHotkey v2+
+﻿#Requires AutoHotkey v2+
 #SingleInstance
 #Warn
 SendMode "Input"
@@ -585,10 +585,10 @@ handleTreeViewSelection(treeView) {
     }
 
     selectedText := treeView.GetText(selectedItem)
-    if (SubStr(selectedText, -3) != "csv") {
-        this.previousSelectedItem := ""
-        return
-    }
+    ; if (SubStr(selectedText, -3) != "csv") {
+    ;     this.previousSelectedItem := ""
+    ;     return
+    ; }
 
     ; Store the original text (only if it's not already stored)
     if (!this.originalTreeviewTexts.Has(selectedItem)) { ; This should almost never be true now
@@ -621,9 +621,9 @@ handleTreeViewDoubleClick(treeView) {
     selectedText := treeView.GetText(selectedItem)
     selectedText := StrReplace(selectedText,"> ","",,,1)
     ; selectedText := SubStr(selectedText,3)
-    if (SubStr(selectedText, -3) != "csv") {
-        return  ; Selected item is not a CSV file, do nothing
-    }
+    ; if (SubStr(selectedText, -3) != "csv") {
+    ;     return  ; Selected item is not a CSV file, do nothing
+    ; }
     
     ; Use the directory path stored in dirPath or the parent directory of the current file
     parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
@@ -1264,10 +1264,10 @@ handleTreeViewDoubleClick(treeView) {
         treeView := this.dpasteGui["DirView"]
     
         ; Open a file selection dialog to choose a new directory
-        newFilePath := FileSelect(3,, "Select a CSV file")
+        newFilePath := FileSelect(3,, "Select a text file")
         if newFilePath == ""  ; If the user cancels, do nothing
             return
-        changingFile := readTargetCSV(newFilePath)
+        changingFile := this.changeFile(newFilePath)
         ; Extract the parent directory from the selected file path
         if RegExMatch(newFilePath, "^(?<Drive>[A-Za-z]:)?(?<Path>.*)[\\/][^\\/]+$", &match) {
             ; Extract the drive and path
@@ -1305,10 +1305,10 @@ handleTreeViewDoubleClick(treeView) {
         ; Get the text of the selected item
         selectedText := this.dpasteGui["DirView"].GetText(selectedItem)
         selectedText := StrReplace(selectedText,"> ","")
-        if (SubStr(selectedText, -3) != "csv") {
-            MsgBox("Selected item is not a CSV file.")
-            return
-        }
+        ; if (SubStr(selectedText, -3) != "csv") {
+        ;     MsgBox("Selected item is not a CSV file.")
+        ;     return
+        ; }
         
         ; Use the directory path stored in dirPath or the parent directory of the current file
         parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
@@ -1331,10 +1331,10 @@ handleTreeViewDoubleClick(treeView) {
         
         ; Get the text of the selected item
         selectedText := this.dpasteGui["DirView"].GetText(selectedItem)
-        if (SubStr(selectedText, -3) != "csv") {
-            MsgBox("Selected item is not a CSV file.")
-            return
-        }
+        ; if (SubStr(selectedText, -3) != "csv") {
+        ;     MsgBox("Selected item is not a CSV file.")
+        ;     return
+        ; }
         
         ; Use the directory path stored in dirPath or the parent directory of the current file
         parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")

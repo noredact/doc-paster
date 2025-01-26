@@ -26,5 +26,5 @@ Doctor Paster
 # TO DO
 - Change how text is sent to avoid the rapid pressing issue
 - Add images to this readme for better instructions
-- The "> " file indicator when the first file is selected seems to not render properly sometimes
+- The "> " file indicator sometimes doesn't get cleared properly
 

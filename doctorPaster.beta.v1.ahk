@@ -549,7 +549,7 @@ populateTreeView(treeView, path) {
         parentFolder := match[1]
     }
 
-    Loop Files, parentFolder . "\*.csv" {
+    Loop Files, parentFolder . "\*.*" {
         itemName := A_LoopFileName
         newItem := ""
         if A_LoopFileFullPath == this.fileName {
@@ -1408,7 +1408,7 @@ handleTreeViewDoubleClick(treeView) {
         
         if (this.dpasteGui["defaultDir"].Value) 
         {
-            savedPath := IniRead(A_ScriptFullPath . ":Stream:$DATA", "initialization", "defaultFilePath", A_ScriptDir . "\Ltest.csv")
+            savedPath := IniRead(A_ScriptFullPath . ":Stream:$DATA", "initialization", "defaultFilePath", A_ScriptDir . "\Lorem.csv")
             if (FileExist(savedPath))
             {
                 this.changeFile(savedPath)

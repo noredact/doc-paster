@@ -1,5 +1,3 @@
-﻿; fix double click function, currently its
-
 #Requires AutoHotkey v2+
 #SingleInstance
 #Warn

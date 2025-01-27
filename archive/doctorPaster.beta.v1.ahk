@@ -3,7 +3,10 @@
 #Warn
 SendMode "Input"
 SetWorkingDir A_ScriptDir
-TraySetIcon A_ScriptDir . "\media\icon.ico",, true
+If !(A_IsCompiled)
+    TraySetIcon A_ScriptDir . "\media\icon.ico",, true
+
+
 ; Read initialization settings from INI
 filePath := IniRead(A_ScriptFullPath . ":Stream:$DATA", "initialization", "defaultFilePath", A_ScriptDir . "\Lorem.csv")
 dirPath := IniRead(A_ScriptFullPath . ":Stream:$DATA", "initialization", "defaultDirPath", A_ScriptDir)

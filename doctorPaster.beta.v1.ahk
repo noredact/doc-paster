@@ -393,8 +393,8 @@ class drPaster {
         
         ; Set up hotkey for mousewheel while over the control
         HotIfWinActive("ahk_id " this.dpasteGui.Hwnd)
-        Hotkey("WheelUp", ObjBindMethod(this, "checkShiftWheel", 1))
-        Hotkey("WheelDown", ObjBindMethod(this, "checkShiftWheel", -1))
+        Hotkey("~WheelUp", ObjBindMethod(this, "checkShiftWheel", 1))
+        Hotkey("~WheelDown", ObjBindMethod(this, "checkShiftWheel", -1))
         ; Jump Position Controls       
         this.dpasteGui.Add("GroupBox", "Section xs ys+63 w120", "Jump to...")
         this.dpasteGui.Add("Text", "-VScroll Right xs+3 ys+15 h40 w60 vJumpPosEdit", "1")

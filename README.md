@@ -31,3 +31,5 @@ Doctor Paster
 - Replicate mouse wheel controls for shift section to other sections
 
 
+<script src="https://liberapay.com/noredact/widgets/receiving.js"></script>
+

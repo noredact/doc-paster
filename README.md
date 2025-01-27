@@ -6,6 +6,7 @@ Doctor Paster
 - A display shows what will be sent when the user presses a number
 - Documents that contain more than 9 elements can be cycled through using zero and dot (.) from the number pad
 - User can adjust how much zero or dot increments the program using ctrl + zero/dot
+  - A "Shift" section next to the increment amount can be used to move around document instead of the hotkeys
 - For large documents, user can 'jump to' an element
 - While the mouse is hovering over these controls (including the font size), the mouse wheel can be used
 - Previews are provided to peek ahead/behind the current position
@@ -25,10 +26,8 @@ Doctor Paster
   
 # TO DO
 - Change how text is sent to avoid the rapid pressing issue
-- Add images to this readme for better instructions
 - The "> " file indicator sometimes doesn't get cleared properly
-- Check for any remaining logic/prompts that allude to csv files only
 - Have this be tested on different systems
-- Clean codebase, remove debug comments, etc...
+- Replicate mouse wheel controls for shift section to other sections
 
 

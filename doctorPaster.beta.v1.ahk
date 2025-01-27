@@ -25,7 +25,6 @@ showSettings := IniRead(A_ScriptFullPath . ":Stream:$DATA", "UserSettings", "sho
 
 ; Global function for reading target CSV file
 readTargetCSV(filePath) {
-; msgbox " 1 " filePath
     contentObj := {}
     contentArray := []
     lengthArray := []
@@ -90,9 +89,6 @@ readTargetCSV(filePath) {
 }
 
 readTargetLines(filePath) {
-    ; Debug message to confirm the file path
-    ; MsgBox("Reading file: " filePath)
-
     contentObj := {}
     contentArray := []
     lengthArray := []
@@ -157,7 +153,6 @@ readTargetLines(filePath) {
 }
 
 readTargetCustom(filePath, customDelimiter) {
-; msgbox "3 " filePath
     contentObj := {}
     contentArray := []
     lengthArray := []
@@ -233,7 +228,7 @@ class drPaster {
     curFile := ""
     scrollArray := []
     textLengthThreshold := 12  ; Maximum length before scrolling
-    optionTextLengthThreshold := 12
+    optionTextLengthThreshold := 12 ; same but for font not affected by font size changes
     scrollTimer := ""
     originalTreeviewTexts := Map()
     previousSelectedItem := ""
@@ -263,12 +258,8 @@ class drPaster {
         if RegExMatch(this.fileName, "[\\/](?<Parent>[^\\/]+)[\\/][^\\/]+$", &match) {
             this.parentDir := match[1]
         }
-        ; RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", this.parentDir)
-        ; ; this.parentDir := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+[\\/]?$", "")
         this.TVdir := "\" this.grandParentDir . "\" . this.parentDir . "\"
         
-        ; msgbox this.TVdir
-    
         ; Prevent GUI from opening out of bounds
         if lastWinPos != "" 
         {
@@ -319,7 +310,6 @@ class drPaster {
         ;load settings
         this.loadSettings()
 
-        ; this.dpasteGui.Show("w1183" this.winPos)
         this.dpasteGui.Show(this.winPos)
         this.dpasteGui.Opt("+AlwaysOnTop")
         this.settingsToggle()
@@ -354,6 +344,7 @@ class drPaster {
 
     addSettingsSection() {
         this.dpasteGui.Add("GroupBox", "Section xm+2 y+24 h140 w275", "Display and navigation settings")
+        
 
         ; Transparency Controls
         this.dpasteGui.Add("GroupBox", "Section xp+5 yp+15 hp-20",  "Visiblity ctrl+shift+Num(+/-)")
@@ -362,6 +353,8 @@ class drPaster {
         this.dpasteGui.Add("Slider", "vWindowTransparency NoTicks Center AltSubmit ToolTipTop Range50-255 xp yp+15 h20", "255")
         this.dpasteGui.Add("Text", "Center xp yp+18", "Text shift+Num(+/-)")
         this.dpasteGui.Add("Slider", "vTextTransparency NoTicks Center AltSubmit ToolTipBottom Range0-255 Invert xp yp+14 h20", "0")
+        this.dpasteGui["WindowTransparency"].OnEvent("Change", ObjBindMethod(this, "updateTransparency"))
+        this.dpasteGui["TextTransparency"].OnEvent("Change", ObjBindMethod(this, "updateTextTransparency")) 
         
                 ;Font Size controls
         this.dpasteGui.Add("Text", "xp yp+19 vfontSizeText", "Font Size:")
@@ -371,45 +364,50 @@ class drPaster {
         ; Add event handler for font size change
         this.dpasteGui["defaultSize"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "defaultSize", "textSize"))
         this.dpasteGui["fontSizeText"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "defaultSize", "textSize"))
-        
         this.dpasteGui["textSize"].OnEvent("Change", (*) => this.updateFontSize())
+        
         ; Increment Controls
-        this.dpasteGui.Add("GroupBox", "vincGB Section x+56 ys w120", "Adj increment")
-        this.dpasteGui.Add("Text", "-VScroll xp49 ys+15 h40 w66 Center  vincAmnt", "1")
+        this.dpasteGui.Add("GroupBox", "vincGB Section x+56 ys w79", "Adj increment")
+        this.dpasteGui.Add("Text", "-VScroll xp4 ys+15 h40 w66 Right  vincAmnt", "1")
         this.dpasteGui["incAmnt"].SetFont("s22")
         this.dpasteGui.SetFont("s8")
         this.incUD := this.dpasteGui.Add("UpDown","Right vincUD Range1-" . this.contentLength - 8, "1")
-
-    
-    ; Add mouse wheel support for the increment control
+        ; Add mouse wheel support for the increment control
+        this.incUD.OnEvent("Change", ObjBindMethod(this, "updateIncrementAmnt"))
         this.dpasteGui["incAmnt"].OnEvent("Click", ObjBindMethod(this, "handleMouseWheel", "incAmnt", "incUD"))
 
+        this.dpasteGui.Add("GroupBox", "vincShift x+10 ys w40", "Shift")
+        shiftText := this.dpasteGui.Add("Text", "-VScroll Center xp+2 yp+17 h13 w35 vshiftPos", this.lastPos + 1)
+        this.shiftUD := this.dpasteGui.Add("UpDown","xp+2 y+1 h21 w30 vshiftUD Horz Range1-" . this.contentLength - 8, this.lastPos + 1)
+        this.dpasteGui["shiftUD"].OnEvent("Change", ObjBindMethod(this, "handleShiftPosButton"))
+        
+        ; Get the control's position and size for reference
+        shiftClassNN := shiftText.ClassNN
+        shiftUDClassNN := this.dpasteGui["shiftUD"]
+        ControlGetPos(&sX, &sY, &sW, &sH, shiftClassNN, this.dpasteGui)
+        ControlGetPos(&suX, &suY, &suW, &suH, shiftUDClassNN, this.dpasteGui)
+        this.sX := suX
+        this.sY := sY
+        this.sW := sW
+        this.sH := sH + suH
+        
+        ; Set up hotkey for mousewheel while over the control
+        HotIfWinActive("ahk_id " this.dpasteGui.Hwnd)
+        Hotkey("WheelUp", ObjBindMethod(this, "checkShiftWheel", 1))
+        Hotkey("WheelDown", ObjBindMethod(this, "checkShiftWheel", -1))
         ; Jump Position Controls       
-        this.dpasteGui.Add("GroupBox", "Section xs ys+63 w120", "Jump to position")
-        jumpBtn := this.dpasteGui.Add("Button", "Default xp+12 ys+17 w30 h33 Center", "Go")
-        this.dpasteGui.Add("Text", "-VScroll  xs68 ys+15 h40 w46 vJumpPosEdit", "1")
+        this.dpasteGui.Add("GroupBox", "Section xs ys+63 w120", "Jump to...")
+        this.dpasteGui.Add("Text", "-VScroll Right xs+3 ys+15 h40 w60 vJumpPosEdit", "1")
         this.dpasteGui["JumpPosEdit"].SetFont("s18")
-        this.jumpUD := this.dpasteGui.Add("UpDown", "Right xs+15 ys+23 vjumpUD 16 w40 h23 Range1-" . this.contentLength - 8, "1")
-
-        
-        this.dpasteGui.SetFont("s8")
-
-        ; Event Handlers
-        
-        ; Setting Adjustments
+        this.jumpUD := this.dpasteGui.Add("UpDown", "Right vjumpUD 16 w40 h23 Range1-" . this.contentLength - 8, "1")
+        jumpBtn := this.dpasteGui.Add("Button", "Default x+6 ys+10 w44 h44 Center", "Go")
         this.dpasteGui["jumpUD"].OnEvent("Change", ObjBindMethod(this, "updateJumpPreview"))
-        this.dpasteGui["WindowTransparency"].OnEvent("Change", ObjBindMethod(this, "updateTransparency"))
-        this.dpasteGui["TextTransparency"].OnEvent("Change", ObjBindMethod(this, "updateTextTransparency")) 
-        this.incUD.OnEvent("Change", ObjBindMethod(this, "updateIncrementAmnt"))
         this.dpasteGui["JumpPosEdit"].OnEvent("Click", ObjBindMethod(this, "jumpToPosition"))
-        
-        
-        ; Button Events
         jumpBtn.OnEvent("Click", ObjBindMethod(this, "jumpToPosition"))
         
+        ; reset font size
+        this.dpasteGui.SetFont("s8")
     }
-
-
     
 	addPreviewSection(){
         ; Add preview section
@@ -466,8 +464,6 @@ class drPaster {
                     this.fileReadType := this.dpasteGui["fileReadType"].Value
                     ; If loading current file is enabled, also save current file path
                     IniWrite(fileReadType, A_ScriptFullPath . ":Stream:$DATA", "initialization", "defaultfileReadType")
-                    ; msgbox this.dpasteGui["fileReadType"].Value
-                    ; msgbox "opt change " this.fileReadType
                     this.changeFile(this.fileName)
                     this.updateDelimiterText() 
             case "currentDelimiter":
@@ -576,36 +572,26 @@ handleTreeViewSelection(treeView) {
         if (previousText) ; Check if the text was stored
             treeView.Modify(this.previousSelectedItem,, previousText)
     }
-
     ; Check if an item is selected
     selectedItem := treeView.GetSelection()
     if !selectedItem {
         this.previousSelectedItem := ""
         return
     }
-
     selectedText := treeView.GetText(selectedItem)
-    ; if (SubStr(selectedText, -3) != "csv") {
-    ;     this.previousSelectedItem := ""
-    ;     return
-    ; }
-
     ; Store the original text (only if it's not already stored)
     if (!this.originalTreeviewTexts.Has(selectedItem)) { ; This should almost never be true now
         this.originalTreeviewTexts[selectedItem] := selectedText
     }
-
     treeView.Modify(selectedItem,, "> " . selectedText)
-
     parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
     fullPath := parentFolder . "\" . selectedText
-
+    
     if FileExist(fullPath) {
         this.changeFile(fullPath)
     } else {
         MsgBox("File not found: " . fullPath)
     }
-
     this.previousSelectedItem := selectedItem
 }
 
@@ -620,10 +606,7 @@ handleTreeViewDoubleClick(treeView) {
     ; Get the text of the selected item
     selectedText := treeView.GetText(selectedItem)
     selectedText := StrReplace(selectedText,"> ","",,,1)
-    ; selectedText := SubStr(selectedText,3)
-    ; if (SubStr(selectedText, -3) != "csv") {
-    ;     return  ; Selected item is not a CSV file, do nothing
-    ; }
+
     
     ; Use the directory path stored in dirPath or the parent directory of the current file
     parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
@@ -724,7 +707,9 @@ handleTreeViewDoubleClick(treeView) {
         this.statusBar.SetText("`t`tNum+* Disable Triggers - Ctrl+Num0/Dot Adjust Increment Amount - Num(/) Hide Settings - Alt+Num(+/-) Font Size",4)
     }
     
-
+    handleShiftPosButton(*){
+        this.updateDisplay()
+    }
     increaseTextTransparency(){
         this.dpasteGui["TextTransparency"].Value += 30
         this.updateTextTransparency
@@ -780,7 +765,6 @@ handleTreeViewDoubleClick(treeView) {
         Sleep sleepamnt
         A_Clipboard := old_clip
         }
-
         navigateTreeView(direction) {
             treeView := this.dpasteGui["DirView"]
             currentSelection := treeView.GetSelection()
@@ -803,8 +787,6 @@ handleTreeViewDoubleClick(treeView) {
                 }
                 return
             }
-
-
             
             ; Move up or down based on the direction
             if (direction > 0) {
@@ -832,14 +814,12 @@ handleTreeViewDoubleClick(treeView) {
             this.loadSelectedFile()
         }
         
-
     moveText(*) {
         ; Check if textScroll is enabled
         if (this.dpasteGui["textScroll"].Value == 1) {
             for controlName in this.scrollArray {
                 ctrlName := controlName
                 currentText := this.dpasteGui[controlName].Text
-                ; msgbox A_Index "  cur text:" currentText
                     ; Check if the last character is a space
                     leftText := SubStr(currentText, 2)
                     rightText := SubStr(currentText, 1, 1)
@@ -848,8 +828,6 @@ handleTreeViewDoubleClick(treeView) {
             }
         }
     }
-
-
     settingsToggle() {
         this.currentToggle := !this.currentToggle
         if (!this.currentToggle) {
@@ -858,8 +836,6 @@ handleTreeViewDoubleClick(treeView) {
             this.dpasteGui.Move(,,, 308)
         }
     }
-
-
     showFontSizeDialog() {
         fontSizeGui := Gui("+Owner" this.dpasteGui.Hwnd)
         fontSizeGui.OnEvent("Escape", (*) => fontSizeGui.Destroy())
@@ -895,23 +871,43 @@ handleTreeViewDoubleClick(treeView) {
         jumpPosEdit := jumpPosGui.Add("Edit", "Number yp-3 x+11 vJumpMenuEdit w60", this.dpasteGui["JumpPosEdit"].Value)
         jumpPosGui.Add("UpDown", "Range1-" . this.contentLength - 8, this.dpasteGui["jumpUD"].Value)
         
-        ; Add preview Text control
-        jumpMenuPreview := jumpPosGui.Add("Text", "xs+40 y+20 w480 h53 vJumpMenuPreview", "Preview will show here")
-        ; jumpPosEdit.OnEvent("Change", () => MsgBox jumpPosEdit.Value)
         
-        ;    OnEvent for jumpMenuEdit to update the preview
+        ; Add preview Text control
+        jumpPosGui.Add("GroupBox", "x22 y44 h98 w650", "Jump Preview")
+        jumpMenuPreview := jumpPosGui.Add("Text", "xp+5 yp+20 w640 h71 vJumpMenuPreview", "Preview will show here")
+        cleanValue := Integer(jumpPosEdit.Value) ? jumpPosEdit.Value : 1
+        jumpDialogPreviewChange(upperLimit, editValue){
+            if (editValue = "") { 
+                jumpMenuPreview.Value := "Enter a number to preview."
+                return 
+            }
+            if editValue < 1 || editValue > upperLimit
+                jumpMenuPreview.Value := "Range out of bounds."
+            else
+            {
+                jumpMenuPreview.Value := ""
+                loop 9 {
+                jumpPreviewDelim := " -- "
+                if A_Index == 9 || A_Index + editValue == upperLimit
+                    jumpPreviewDelim := ""
+                if A_Index == 1
+                    jumpMenuPreview.Value .= this.curFile.contentArr[jumpPosEdit.Value] . jumpPreviewDelim
+                if A_Index + editValue > upperLimit
+                    break
+                else
+                    jumpMenuPreview.Value .= this.curFile.contentArr[jumpPosEdit.Value + A_Index] . jumpPreviewDelim
+                }
+                this.dpasteGui["JumpPosEdit"].Value := jumpPosEdit.Value
+            }
+        }
+        ; OnEvent for jumpMenuEdit to update the preview
         jumpPosEdit.OnEvent("Change", (*) => (
-            this.dpasteGui["JumpPosEdit"].Value := jumpPosEdit.Value
-            
-            jumpMenuPreview.Value := this.curFile.contentArr[jumpPosEdit.Value]  ; Call the method to update preview
-            ; jumpMenuPreview.Value := this.dpasteGui["JumpPreview"].Value  ; Call the method to update preview
-            ; jumpPosMenuPreview.Value := this.updateJumpPreview()  ; Call the method to update preview
-            ; jumpPosPreview.Value := this.updateJumpPreview()  ; Call the method to update preview
+            jumpDialogPreviewChange(this.contentLength, jumpPosEdit.Value)
         ))
         
         
         ; Add buttons
-        applyBtn := jumpPosGui.Add("Button", "Default x+10 y+15 w80", "Apply")
+        applyBtn := jumpPosGui.Add("Button", "Default x510 y+15 w80", "Apply")
         applyBtn.OnEvent("Click", (*) => (
             this.dpasteGui["JumpPosEdit"].Value := jumpPosEdit.Value
             this.jumpToPosition()
@@ -923,6 +919,7 @@ handleTreeViewDoubleClick(treeView) {
         
         jumpPosGui.Show()
     }
+    
     showEmptyStringDialog() {
         emptyStringGui := Gui("+Owner" this.dpasteGui.Hwnd)
         emptyStringGui.OnEvent("Escape", (*) => emptyStringGui.Destroy())
@@ -968,10 +965,46 @@ handleTreeViewDoubleClick(treeView) {
         customDelimiterGui.Show()
     }
 
+
+
+    checkShiftWheel(direction, *) {
+        CoordMode("Mouse", "Client")
+        MouseGetPos(&xpos, &ypos)
+        if (xpos >= this.sX && xpos <= this.sX + this.sW 
+            && ypos >= this.sY && ypos <= this.sY + this.sH) 
+        {
+        if (direction < 0)
+        {
+            newValue := this.dpasteGui["shiftUD"].Value + this.incAmount + 1
+            this.currentPosition := Max(0, this.currentPosition - this.incAmount)
+        }
+        else 
+        {
+            newValue := this.dpasteGui["shiftUD"].Value - this.incAmount + 1
+            this.currentPosition := Min(MainGui.curFile.contentArr.Length - 9, this.currentPosition + this.incAmount)
+            
+        } 
+        }
+            this.updateDisplay()
+            this.dpasteGui["shiftUD"].Value :=  this.currentPosition + 1
+            this.dpasteGui["shiftPos"].Value := this.currentPosition + 1
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
     handleMouseWheel(controlName, upDownName, guiCtrl, info) {
         ; Check if the mouse wheel is being scrolled
-        ; if controlName == "fontSizeText"
-        ;     controlName := "textSize"
         if (info = "MouseWheelUp" || info = "MouseWheelDown") {
             ; Get the current value of the UpDown control
             currentValue := this.dpasteGui[upDownName].Value
@@ -991,7 +1024,6 @@ handleTreeViewDoubleClick(treeView) {
             ; Update the UpDown control and the associated text control
             this.dpasteGui[upDownName].Value := newValue
             this.dpasteGui[controlName].Value := newValue
-            
             ; Trigger any associated logic (e.g., update the display)
             this.updateIncrementAmnt()
             this.updateFontSize()
@@ -1078,7 +1110,7 @@ handleTreeViewDoubleClick(treeView) {
         }
         this.dpasteGui["JumpPreview"].Value := previewText
     }
-
+    
     jumpToPosition(*) 
     {
         position := this.jumpUD.Value
@@ -1087,7 +1119,6 @@ handleTreeViewDoubleClick(treeView) {
         position := Integer(position)
         switch
         {
-            ; if (position >= 1 && position <= this.curFile.contentArr.Length - 8) {
             case (position < 1):
             {
                 jumpPos := 0
@@ -1105,7 +1136,7 @@ handleTreeViewDoubleClick(treeView) {
             }
         }
         this.currentPosition := jumpPos
-    	this.dpasteGui["JumpPosEdit"].Value := jumpEditVal
+        this.dpasteGui["JumpPosEdit"].Value := jumpEditVal
         this.updateDisplay()
         this.updateJumpPreview()
     }
@@ -1123,10 +1154,8 @@ handleTreeViewDoubleClick(treeView) {
     }
     updateDisplay() {
         this.scrollArray := []  ; Reset scroll array
-        ; incEdit := this.dpasteGui["mcstls_updown321"]
         this.incUD.Opt("Range1-" this.contentLength)
         this.jumpUD.Opt("Range1-" this.contentLength)
-        ; this.dpasteGui.Opt("UpDown","Range1-" . this.curFile.contentArr.Length - 8, "1")
         Loop 9 {
             currentArrayPos := this.currentPosition + A_Index
             if (currentArrayPos <= this.curFile.contentArr.Length) {
@@ -1139,7 +1168,7 @@ handleTreeViewDoubleClick(treeView) {
                 }
             }
         }
-
+        
         ; Update preview text
         incAmount := this.incAmount
         
@@ -1204,7 +1233,6 @@ handleTreeViewDoubleClick(treeView) {
                 this.scrollArray.Push("incPreviewNext")
     }
     
-
         this.TVdir := ""
         if RegExMatch(this.fileName, "[\\/](?<GrandParent>[^\\/]+)[\\/][^\\/]+[\\/][^\\/]+$", &match) {
             this.grandParentDir := match[1]
@@ -1212,8 +1240,6 @@ handleTreeViewDoubleClick(treeView) {
         if RegExMatch(this.fileName, "[\\/](?<Parent>[^\\/]+)[\\/][^\\/]+$", &match) {
             this.parentDir := match[1]
         }
-        ; RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", this.parentDir)
-        ; ; this.parentDir := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+[\\/]?$", "")
         this.TVdir := "\" this.grandParentDir . "\" . this.parentDir . "\"     
         this.dpasteGui["incPreviewPrev"].Value := incPrevText
         this.dpasteGui["incPreviewNext"].Value := incNextText
@@ -1221,16 +1247,12 @@ handleTreeViewDoubleClick(treeView) {
         this.dpasteGui["PreviewNext"].Value := nextText
         this.dpasteGui["incAmnt"].Value := this.incAmount
         this.dpasteGui["incUD"].Value := this.incAmount
-        ; this.dpasteGui["JumpPosEdit"].Value := this.currentPosition
-        ; this.dpasteGui["jumpUD"].Value := this.currentPosition
         this.dpasteGui["curDirDisp"].Value :=  this.TVdir
         
         this.updateStatusBar() 
     }
-
     ; change file and reset variables
     changeFile(filePath) {
-    ; msgbox filePath
         this.curFile := {}
         customDelim := this.customDelimiterValue
         delimiter := this.currentDelimiterText
@@ -1248,12 +1270,11 @@ handleTreeViewDoubleClick(treeView) {
                 MsgBox("Invalid file read type: " . this.fileReadType) ; Handle unexpected values
                 return
         }
-        ; this.curFile := readTargetCSV(filePath)
         this.fileName := this.curFile.name
         this.contentLength := this.curFile.contentArr.Length
         this.lineCounterArr := this.curFile.lineArr
         this.totalLines := this.curFile.lines
-
+        
         ;refresh display
         this.updateDisplay()
         this.updateJumpPreview()
@@ -1262,7 +1283,6 @@ handleTreeViewDoubleClick(treeView) {
 
     changeDir(*) {
         treeView := this.dpasteGui["DirView"]
-    
         ; Open a file selection dialog to choose a new directory
         newFilePath := FileSelect(3,, "Select a text file")
         if newFilePath == ""  ; If the user cancels, do nothing
@@ -1273,8 +1293,6 @@ handleTreeViewDoubleClick(treeView) {
             ; Extract the drive and path
             newDrive := match["Drive"]
             newPath := match["Path"]
-    ; msgbox newDrive
-    ; msgbox newPath
             ; Update the directory tracking variables
             this.parentDir := RegExReplace(newPath, "^.*[\\/]([^\\/]+)$", "$1")
             this.grandParentDir := RegExReplace(newPath, "^.*[\\/]([^\\/]+)[\\/][^\\/]+$", "$1")
@@ -1285,7 +1303,6 @@ handleTreeViewDoubleClick(treeView) {
             this.changeFile(newFilePath)
             ; Populate the TreeView with CSV files from the new directory
             this.populateTreeView(treeView, newFilePath)
-    
             ; Update the display and jump preview
             this.updateDisplay()
             this.updateJumpPreview()
@@ -1305,11 +1322,6 @@ handleTreeViewDoubleClick(treeView) {
         ; Get the text of the selected item
         selectedText := this.dpasteGui["DirView"].GetText(selectedItem)
         selectedText := StrReplace(selectedText,"> ","")
-        ; if (SubStr(selectedText, -3) != "csv") {
-        ;     MsgBox("Selected item is not a CSV file.")
-        ;     return
-        ; }
-        
         ; Use the directory path stored in dirPath or the parent directory of the current file
         parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
         fullPath := parentFolder . "\" . selectedText
@@ -1331,10 +1343,6 @@ handleTreeViewDoubleClick(treeView) {
         
         ; Get the text of the selected item
         selectedText := this.dpasteGui["DirView"].GetText(selectedItem)
-        ; if (SubStr(selectedText, -3) != "csv") {
-        ;     MsgBox("Selected item is not a CSV file.")
-        ;     return
-        ; }
         
         ; Use the directory path stored in dirPath or the parent directory of the current file
         parentFolder := RegExReplace(this.fileName, "^(.*)[\\/][^\\/]+$", "$1")
@@ -1387,7 +1395,6 @@ handleTreeViewDoubleClick(treeView) {
         this.dpasteGui["showSettings"].Value := showSettings
         this.dpasteGui["loadViewSettings"].Value := loadViewSettings
         this.dpasteGui["textScroll"].Value := textScroll
-
         ; Set position if enabled
         if (loadLastPos == "1") {
             this.currentPosition := Integer(lastPosition)

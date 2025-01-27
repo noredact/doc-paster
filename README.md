@@ -11,7 +11,7 @@ Doctor Paster
 - Previews are provided to peek ahead/behind the current position
 - 'Empty' elements of a document are replaced by a default string which the user can change
 - A status bar indicates which file is currently being read, where in the document the program is, and some useful hotkeys.
-- A section is provided to show other CSV documents contained in the current parent folder
+- A section is provided to show other documents contained in the current parent folder
   - User can use Numpad + (+/-) to navigate the current directory
 - There are some features for users who have become acustomed to the program
   - Ctrl+(+/-) adjust the window's transparency
@@ -27,6 +27,7 @@ Doctor Paster
 - Change how text is sent to avoid the rapid pressing issue
 - Add images to this readme for better instructions
 - The "> " file indicator sometimes doesn't get cleared properly
+- Check for any remaining logic/prompts that allude to csv files only
 - Have this be tested on different systems
 - Clean codebase, remove debug comments, etc...
 

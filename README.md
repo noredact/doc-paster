@@ -1,3 +1,10 @@
+How to install
+- AHK
+  - Go to the ahk folder, download everything there into the same folder (the script looks for the icon in the src folder wherever you put it)
+  - run the script
+- Without AHK
+  - Go to the exe folder and download the exe, windows will probably give you warnings, follow the steps to install it anyway
+
 2025-01-24
 Doctor Paster
 
